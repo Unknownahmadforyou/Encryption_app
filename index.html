@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Encryption Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>File Encryption Tool</h1>
+                <p class="subtitle">Secure your files with advanced encryption</p>
+            </div>
+            <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        
+        <div class="card">
+            <div class="mode-selector">
+                <label>Select Operation Mode:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="mode" value="encrypt" checked>
+                        <span>Encrypt</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="mode" value="decrypt">
+                        <span>Decrypt</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="fileInput" id="fileInputLabel">Select Files</label>
+                <input type="file" id="fileInput" multiple accept="*">
+                <p class="input-hint">You can select multiple files at once</p>
+            </div>
+
+            <div class="input-group extension-group" id="extensionGroup">
+                <label>Output File Extension</label>
+                <div class="extension-options">
+                    <select id="extensionSelect">
+                        <option value=".enc">.enc (Default)</option>
+                        <option value=".img">.img</option>
+                        <option value=".jpg">.jpg</option>
+                        <option value=".pdf">.pdf</option>
+                        <option value=".docx">.docx</option>
+                        <option value=".mp3">.mp3</option>
+                        <option value=".txt">.txt</option>
+                        <option value=".zip">.zip</option>
+                        <option value=".rar">.rar</option>
+                        <option value=".exe">.exe</option>
+                    </select>
+                    <input type="text" id="customExtension" placeholder="Or enter custom extension" class="custom-extension">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Encryption Password</label>
+                <input type="password" id="password" placeholder="Enter a strong password">
+                <p class="input-hint">Use a strong password for better security</p>
+            </div>
+
+            <div class="button-group">
+                <button id="processBtn" class="btn primary">
+                    <i class="fas fa-lock"></i>
+                    <span>Process Files</span>
+                </button>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <span id="progressText">0%</span>
+            </div>
+
+            <div id="status" class="status"></div>
+        </div>
+
+        <div class="file-list" id="fileList">
+            <h3>Processed Files</h3>
+            <div class="file-list-header">
+                <span>Filename</span>
+                <span>Status</span>
+            </div>
+            <ul id="processedFiles"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
